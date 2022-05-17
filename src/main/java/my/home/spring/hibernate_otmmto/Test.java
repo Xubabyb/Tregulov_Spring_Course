@@ -46,7 +46,6 @@ public class Test {
             session = sessionFactory.getCurrentSession();
             session.beginTransaction();
             Employee employee = session.get(Employee.class, 2);
-            session.delete(employee);
             session.getTransaction().commit();
             System.out.println("Done!");
 
