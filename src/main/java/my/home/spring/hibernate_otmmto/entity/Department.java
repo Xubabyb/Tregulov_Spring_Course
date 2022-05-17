@@ -1,6 +1,8 @@
 package my.home.spring.hibernate_otmmto.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "departments")
@@ -10,7 +12,7 @@ public class Department {
     private int id;
 
     @Column(name = "name")
-    private String name;
+    private String departmentName;
 
     @Column(name = "max_salary")
     private int maxSalary;
@@ -18,23 +20,45 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "department")
+    private List<Employee> employees;
+
+
     public Department() {
     }
 
     public Department(String name, int maxSalary, int minSalary) {
-        this.name = name;
+        this.departmentName = name;
         this.maxSalary = maxSalary;
         this.minSalary = minSalary;
+    }
+
+    public void addEmployeeToDepartment(Employee... emps) {
+        if (employees == null) {
+            employees = new ArrayList<>();
+        }
+        for (Employee employee : emps) {
+            employees.add(employee);
+            employee.setDepartment(this); //TODO  при добавлении работника в департамент заполняется поле работника
+        }
     }
 
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", name='" + name + '\'' +
+                ", name='" + departmentName + '\'' +
                 ", maxSalary=" + maxSalary +
                 ", minSalary=" + minSalary +
                 '}';
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
     public int getId() {
@@ -45,13 +69,14 @@ public class Department {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getDepartmentName() {
+        return departmentName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDepartmentName(String departmentName) {
+        this.departmentName = departmentName;
     }
+
 
     public int getMaxSalary() {
         return maxSalary;
