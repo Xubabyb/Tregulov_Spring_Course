@@ -1,7 +1,7 @@
-package my.home.spring.hibernate_otmmto;
+package my.home.spring.hibernate_one_to_many_bi;
 
-import my.home.spring.hibernate_otmmto.entity.Employee;
-import my.home.spring.hibernate_otmmto.utils.Util;
+import my.home.spring.hibernate_one_to_many_bi.entity.Employee;
+import my.home.spring.hibernate_one_to_many_bi.utils.Util;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 

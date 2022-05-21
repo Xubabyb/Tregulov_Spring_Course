@@ -1,9 +1,7 @@
-package my.home.spring.hibernate_test.utils;
+package my.home.spring.hibernate_one_to_many_uni.utils;
 
-import my.home.spring.hibernate_test.entity.Detail;
-import my.home.spring.hibernate_test.entity.Employee;
-import my.home.spring.hibernate_test.entity_project.Role;
-import my.home.spring.hibernate_test.entity_project.User;
+import my.home.spring.hibernate_one_to_many_uni.entity.Department;
+import my.home.spring.hibernate_one_to_many_uni.entity.Employee;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
@@ -15,9 +13,7 @@ public class Util {
         sessionFactory = new Configuration()
                 .configure("hibernate.cfg.xml")
                 .addAnnotatedClass(Employee.class)
-                .addAnnotatedClass(Detail.class)
-                .addAnnotatedClass(User.class)
-                .addAnnotatedClass(Role.class)
+                .addAnnotatedClass(Department.class)
                 .buildSessionFactory();
     }
 

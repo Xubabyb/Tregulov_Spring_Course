@@ -1,4 +1,4 @@
-package my.home.spring.hibernate_otmmto.entity;
+package my.home.spring.hibernate_one_to_many_bi.entity;
 
 import javax.persistence.*;
 

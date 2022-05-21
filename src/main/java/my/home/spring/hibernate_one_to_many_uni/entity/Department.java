@@ -1,4 +1,4 @@
-package my.home.spring.hibernate_otmmto.entity;
+package my.home.spring.hibernate_one_to_many_uni.entity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -20,12 +20,9 @@ public class Department {
     @Column(name = "min_salary")
     private int minSalary;
 
-    @OneToMany(cascade = {CascadeType.PERSIST,
-            CascadeType.MERGE,
-            CascadeType.REFRESH,
-            CascadeType.DETACH},
-            mappedBy = "department",
+    @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
+    @JoinColumn(name = "department_id")
     private List<Employee> employees;
 
 
@@ -44,7 +41,7 @@ public class Department {
         }
         for (Employee employee : emps) {
             employees.add(employee);
-            employee.setDepartment(this); //TODO  при добавлении работника в департамент заполняется поле работника
+           // employee.setDepartment(this); //TODO  при добавлении работника в департамент заполняется поле работника
         }
     }
 
